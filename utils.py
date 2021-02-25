@@ -9,7 +9,11 @@ def validate_age(age_str):
 
 # create a new csv file and export dataframe to it
 def export_to_csv(data):
-	# Convert PySpark Dataframe to Pandas DataFrame
-	resDF=data.toPandas()
-	# write datframe to csv file
-	resDF.to_csv("data.csv", sep=",")
+
+	# write PySpark Dataframe to csv file
+	data.write.options(header = 'True',delimiter =',')\
+				.csv('data.csv')
+	# # Convert PySpark Dataframe to Pandas DataFrame
+	# resDF=data.toPandas()
+	# # write datframe to csv file
+	# resDF.to_csv("data.csv", sep=",")
